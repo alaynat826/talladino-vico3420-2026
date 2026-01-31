@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Styled Webpage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        #container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+        }
+
+        #footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: gray;
+        }
+
+        .highlight {
+            color: #2a7ae2;
+            font-weight: bold;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                background-color: #eaeaea;
+            }
+
+            #container {
+                padding: 10px;
+            }
+
+            .card {
+                background-color: #e0f0ff;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1 style="color: darkgreen;">Welcome to My Webpage</h1>
+
+        <p class="highlight">
+            This is a simple responsive webpage created using HTML and CSS.
+        </p>
+
+        <div class="card">
+            <p>
+                Resize the browser window to see how the layout changes on smaller screens.
+            </p>
+        </div>
+
+        <div class="card">
+            <p>
+                This page demonstrates IDs, classes, element selectors, inline CSS,
+                and a media query.
+            </p>
+        </div>
+
+        <div id="footer">
+            <p>Week 3 Responsive Design Assignment</p>
+        </div>
+    </div>
+
+</body>
+</html>
