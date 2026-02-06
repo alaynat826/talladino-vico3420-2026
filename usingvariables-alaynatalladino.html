@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 4 - Using Variables</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #2a7ae2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>JavaScript Variables Demo</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // 1️⃣ Create and initialize variables
+        let firstName = "Alayna";
+        let age = 20;
+        let favoriteNumber = 7;
+
+        // 2️⃣ Display original variables
+        let outputDiv = document.getElementById("output");
+
+        outputDiv.innerHTML += "<p>Original Name: <span class='highlight'>" + firstName + "</span></p>";
+        outputDiv.innerHTML += "<p>Original Age: <span class='highlight'>" + age + "</span></p>";
+        outputDiv.innerHTML += "<p>Favorite Number: <span class='highlight'>" + favoriteNumber + "</span></p>";
+
+        // 3️⃣ Update variables
+        firstName = "Alayna Smith";
+        age = age + 1;              // math update
+        favoriteNumber = favoriteNumber * 2;  // multiplication
+
+        outputDiv.innerHTML += "<hr>";
+        outputDiv.innerHTML += "<p>Updated Name: <span class='highlight'>" + firstName + "</span></p>";
+        outputDiv.innerHTML += "<p>Updated Age: <span class='highlight'>" + age + "</span></p>";
+        outputDiv.innerHTML += "<p>Updated Favorite Number: <span class='highlight'>" + favoriteNumber + "</span></p>";
+
+        // 4️⃣ Concatenate two variables
+        let greeting = "Hello, " + firstName + "!";
+        outputDiv.innerHTML += "<hr>";
+        outputDiv.innerHTML += "<p>Concatenated Greeting: <span class='highlight'>" + greeting + "</span></p>";
+
+        // 5️⃣ Perform math operations
+        let addition = age + favoriteNumber;
+        let subtraction = age - favoriteNumber;
+        let multiplication = age * favoriteNumber;
+        let division = age / favoriteNumber;
+
+        outputDiv.innerHTML += "<hr>";
+        outputDiv.innerHTML += "<p>Addition (age + favoriteNumber): <span class='highlight'>" + addition + "</span></p>";
+        outputDiv.innerHTML += "<p>Subtraction (age - favoriteNumber): <span class='highlight'>" + subtraction + "</span></p>";
+        outputDiv.innerHTML += "<p>Multiplication (age × favoriteNumber): <span class='highlight'>" + multiplication + "</span></p>";
+        outputDiv.innerHTML += "<p>Division (age ÷ favoriteNumber): <span class='highlight'>" + division + "</span></p>";
+
+    </script>
+
+</body>
+</html>
