@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Week 5 Assignment</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightgray;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #results {
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple User Checker</h1>
+    <div id="results"></div>
+
+    <script>
+        // create variables
+        let name;
+        let age;
+        let favoriteFood;
+
+        // ask questions
+        name = prompt("What is your name?");
+        age = prompt("How old are you?");
+        favoriteFood = prompt("What is your favorite food?");
+
+        // convert age to number
+        age = Number(age);
+
+        let results = document.getElementById("results");
+
+        // simple if statement
+        if (age > 30) {
+            results.innerHTML += "<p>You are over 30.</p>";
+        }
+
+        // if...else statement
+        if (age >= 18) {
+            results.innerHTML += "<p>You are an adult.</p>";
+        } else {
+            results.innerHTML += "<p>You are not an adult yet.</p>";
+        }
+
+        // if...else if...else statement
+        if (age < 13) {
+            results.innerHTML += "<p>You are a kid.</p>";
+        } else if (age < 20) {
+            results.innerHTML += "<p>You are a teenager.</p>";
+        } else {
+            results.innerHTML += "<p>You are 20 or older.</p>";
+        }
+
+        // switch statement (bonus)
+        switch (favoriteFood.toLowerCase()) {
+            case "pizza":
+                results.innerHTML += "<p>Pizza is a good choice.</p>";
+                break;
+            case "pasta":
+                results.innerHTML += "<p>Pasta is delicious.</p>";
+                break;
+            case "salad":
+                results.innerHTML += "<p>Salad is healthy.</p>";
+                break;
+            default:
+                results.innerHTML += "<p>That sounds good!</p>";
+        }
+
+        // display name
+        results.innerHTML += "<p>Nice to meet you, " + name + ".</p>";
+    </script>
+
+</body>
+</html>
