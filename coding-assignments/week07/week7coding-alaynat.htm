@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 7 Functions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: lightblue;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: deepskyblue;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Practicing Functions</h1>
+
+    <button onclick="sayHello()">Click for Greeting</button>
+
+    <button onclick="askName()">Enter Your Name</button>
+
+    <button onclick="calculateTotal(5, 3)">Calculate Total</button>
+
+    <div id="output"></div>
+
+    <script>
+
+        function sayHello() {
+            document.getElementById("output").innerHTML = "Hello! Welcome to my page.";
+        }
+
+        function greetUser(name) {
+            return "Hi " + name + "! Nice to meet you.";
+        }
+
+        function askName() {
+            let userName = prompt("What is your name?");
+            let message = greetUser(userName);
+            document.getElementById("output").innerHTML = message;
+        }
+
+        function calculateTotal(num1, num2) {
+            let total = num1 + num2;
+            document.getElementById("output").innerHTML =
+                "The total of " + num1 + " and " + num2 + " is " + total + ".";
+        }
+
+        sayHello();
+
+    </script>
+
+</body>
+</html>
