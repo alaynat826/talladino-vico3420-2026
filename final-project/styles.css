@@ -4,6 +4,10 @@ body {
   background: linear-gradient(to bottom, #4facfe, #c2e9fb);
 }
 
+section {
+  margin: 20px;
+}
+
 canvas {
   border: 3px solid #333;
   display: block;
@@ -20,7 +24,6 @@ canvas {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 0 #cc9900;
 }
 
 #startBtn:hover {
