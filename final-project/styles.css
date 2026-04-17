@@ -8,8 +8,8 @@ canvas {
   border: 3px solid #333;
   display: block;
   margin: 20px auto;
-  background: linear-gradient(to bottom, #87CEEB, #e0f7ff);
   border-radius: 10px;
+  background: #87CEEB;
 }
 
 #startBtn {
