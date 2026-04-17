@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flappy Bird Game</title>
+  <title>Flappy Bird Final Project</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <h1>Flappy Bird</h1>
+<h1>Flappy Bird Game</h1>
 
-  <canvas id="gameCanvas" width="400" height="600"></canvas>
+<button id="startBtn">Start Game</button>
 
-  <button id="startBtn">Start Game</button>
+<canvas id="gameCanvas" width="400" height="600"></canvas>
 
-  <section id="instructions">
-    <h2>Instructions</h2>
-    <p>Press SPACE to jump and avoid the pipes!</p>
-  </section>
+<div id="gameOverScreen" style="display:none;">
+  <h2>Game Over</h2>
+  <p id="finalScore"></p>
+  <button onclick="restartGame()">Play Again</button>
+  <canvas id="scoreChart" width="300" height="200"></canvas>
+</div>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>This game was made for my final project.</p>
-  </section>
+<section>
+  <h2>Instructions</h2>
+  <p>Press SPACE to jump and avoid pipes.</p>
+</section>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
