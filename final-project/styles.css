@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  font-family: Arial;
+  background: linear-gradient(to bottom, #87CEEB, #e0f7ff); /* sky gradient */
+}
+
+canvas {
+  border: 2px solid black;
+  display: block;
+  margin: 20px auto;
+  background: transparent;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lightblue;
+}
