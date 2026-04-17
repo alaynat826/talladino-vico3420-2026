@@ -2,26 +2,36 @@
 <html>
 <head>
   <title>Flappy Bird Final Project</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Flappy Bird Game</h1>
+<section id="home">
+  <h1>Flappy Bird Game</h1>
+  <button id="startBtn">Start Game</button>
+</section>
 
-<button id="startBtn">Start Game</button>
+<section id="gameSection">
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+</section>
 
-<canvas id="gameCanvas" width="400" height="600"></canvas>
+<section id="instructions">
+  <h2>Instructions</h2>
+  <p>Press SPACE to jump and avoid pipes.</p>
+</section>
 
-<div id="gameOverScreen" style="display:none;">
+<section id="about">
+  <h2>About</h2>
+  <p>This is a Flappy Bird-style game built using HTML, CSS, JavaScript, and Chart.js.</p>
+</section>
+
+<section id="gameOverScreen" style="display:none;">
   <h2>Game Over</h2>
   <p id="finalScore"></p>
   <button onclick="startGame()">Play Again</button>
-</div>
-
-<section>
-  <h2>Instructions</h2>
-  <p>Press SPACE to jump and avoid pipes.</p>
+  <canvas id="scoreChart" width="300" height="200"></canvas>
 </section>
 
 <script src="script.js"></script>
