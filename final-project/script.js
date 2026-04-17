@@ -7,20 +7,16 @@ let gravity = 0.5;
 
 let pipes = [];
 let clouds = [];
-
 let score = 0;
+
 let gameRunning = false;
 let gameStarted = false;
 
 let highScore = localStorage.getItem("highScore") || 0;
+let scoreHistory = [];
 
-let groundX = 0;
+let chartInstance = null;
 
-// sounds
-const jumpSound = new Audio("https://www.soundjay.com/button/beep-07.wav");
-const hitSound = new Audio("https://www.soundjay.com/button/beep-10.wav");
-
-// START BUTTON (FIXED)
 document.getElementById("startBtn").onclick = () => {
   startGame();
 };
@@ -32,26 +28,20 @@ function startGame() {
   document.getElementById("gameOverScreen").style.display = "none";
 }
 
-// SPACE JUMP
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space" && gameRunning) {
     velocity = -8;
-    jumpSound.currentTime = 0;
-    jumpSound.play().catch(() => {});
   }
 });
 
-// RESET (IMPORTANT FIX)
 function resetGame() {
   birdY = 300;
   velocity = 0;
   pipes = [];
   clouds = [];
   score = 0;
-  groundX = 0;
 }
 
-// CLOUDS
 function createCloud() {
   clouds.push({
     x: canvas.width + 50,
@@ -61,19 +51,15 @@ function createCloud() {
   });
 }
 
-// PIPES (FIXED + EASIER GAP)
 function createPipe() {
-  const gap = 230;
-
   pipes.push({
     x: canvas.width,
     top: Math.random() * 180 + 60,
-    gap: gap,
+    gap: 230,
     scored: false
   });
 }
 
-// BIRD
 function drawBird() {
   const x = 50;
 
@@ -96,28 +82,45 @@ function drawBird() {
   ctx.fill();
 }
 
-// GAME OVER (FIXED)
 function gameOver() {
   gameRunning = false;
-
-  hitSound.currentTime = 0;
-  hitSound.play().catch(() => {});
 
   if (score > highScore) {
     highScore = score;
     localStorage.setItem("highScore", highScore);
   }
 
+  scoreHistory.push(score);
+
   document.getElementById("gameOverScreen").style.display = "block";
   document.getElementById("finalScore").innerHTML =
     "Score: " + score + "<br>High Score: " + highScore;
+
+  drawChart();
 }
 
-// LOOP
+function drawChart() {
+  const ctx2 = document.getElementById("scoreChart").getContext("2d");
+
+  if (chartInstance) {
+    chartInstance.destroy();
+  }
+
+  chartInstance = new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: scoreHistory.map((_, i) => "Game " + (i + 1)),
+      datasets: [{
+        label: "Scores",
+        data: scoreHistory
+      }]
+    }
+  });
+}
+
 function gameLoop() {
   requestAnimationFrame(gameLoop);
 
-  // BLUE SKY (FIXED FOREVER)
   ctx.fillStyle = "#87CEEB";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -127,17 +130,6 @@ function gameLoop() {
     velocity += gravity;
     birdY += velocity;
 
-    // ground
-    groundX -= 2;
-    if (groundX <= -50) groundX = 0;
-
-    ctx.fillStyle = "#8B5A2B";
-    ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
-
-    ctx.fillStyle = "#228B22";
-    ctx.fillRect(groundX, canvas.height - 25, canvas.width, 5);
-
-    // clouds
     if (Math.random() < 0.015) createCloud();
 
     ctx.fillStyle = "white";
@@ -148,33 +140,26 @@ function gameLoop() {
       ctx.fill();
     }
 
-    // pipes
     if (Math.random() < 0.02) createPipe();
 
-    ctx.fillStyle = "#2ecc71";
+    ctx.fillStyle = "green";
 
     for (let p of pipes) {
       p.x -= 2;
 
-      const gap = p.gap;
-      const bottomY = p.top + gap;
+      const bottom = p.top + p.gap;
 
-      // top pipe
       ctx.fillRect(p.x, 0, 60, p.top);
+      ctx.fillRect(p.x, bottom, 60, canvas.height);
 
-      // bottom pipe
-      ctx.fillRect(p.x, bottomY, 60, canvas.height);
-
-      // collision
       if (
         50 < p.x + 60 &&
         50 + 30 > p.x &&
-        (birdY < p.top || birdY > bottomY)
+        (birdY < p.top || birdY > bottom)
       ) {
         gameOver();
       }
 
-      // score
       if (!p.scored && p.x < 50) {
         score++;
         p.scored = true;
@@ -190,3 +175,10 @@ function gameLoop() {
 }
 
 gameLoop();
+
+function startGame() {
+  resetGame();
+  gameRunning = true;
+  gameStarted = true;
+  document.getElementById("gameOverScreen").style.display = "none";
+}
